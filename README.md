@@ -30,9 +30,14 @@ python test.py -d [dataset] -n [network] -f [factor] --ipc [ipc] --repeat [#repe
 - To evaluate **IDC-I**, set ```-f 1```. To evaluate **IDC**, set ```-f 3``` for ImageNet and ```-f 2``` for others.
 - For detailed explanation for arguments, please refer to ```argument.py```
 
-As an example, you can evaluate IDC (10 images/class) on CIFAR-10 and ConvNet-3 for 3 times by
+As an example, 
+- To evaluate IDC (10 images/class) on CIFAR-10 and ConvNet-3 for 3 times, run
 ```
 python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
+```
+- To evaluate IDC (20 images/class) on ImageNet with 10 classes and ResNetAP-10 for 3 times, run
+```
+python test.py -d imagenet --nclass 10 -n convnet -f 3 --ipc 20 --repeat 3
 ```
 
 ## Optimize Condensed Data
