@@ -1,5 +1,5 @@
 # Efficient-Dataset-Condensation
-Official PyTorch implementation of "Dataset Condensation via Efficient Synthetic-Data Parameterization" (ICML'22)
+Official PyTorch implementation of **"Dataset Condensation via Efficient Synthetic-Data Parameterization" (ICML'22)**
 
 ![image samples](images/title.png)
 
@@ -9,6 +9,10 @@ However, the existing approaches have fundamental limitations in optimization du
 To this end, we propose a novel condensation framework that generates multiple synthetic data with a limited storage budget via efficient parameterization considering data regularity. 
 We further analyze the shortcomings of the existing gradient matching-based condensation methods and develop an effective optimization technique for improving the condensation of training data information. 
 We propose a unified algorithm that drastically improves the quality of condensed data against the current state-of-the-art on CIFAR-10, ImageNet, and Speech Commands.*
+
+## Requirements
+- The code has been tested with PyTorch 1.11.0.   
+- To run the codes, install efficientnet package ```pip install efficientnet_pytorch```
 
 ## Test Condensed Data
 
