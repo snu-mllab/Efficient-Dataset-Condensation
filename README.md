@@ -15,6 +15,8 @@ We propose a unified algorithm that drastically improves the quality of condense
 - To run the codes, install efficientnet package ```pip install efficientnet_pytorch```
 
 ## Test Condensed Data
-
+#### Download data
+- You can download condensed data evaluated in our paper from [Here](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing).
+- The possible datasets are CIFAR-10, MNIST, SVHN, FashionMNIST, and ImageNet (10, 100 subclasses).
 
 ## Optimize Condensed Data
