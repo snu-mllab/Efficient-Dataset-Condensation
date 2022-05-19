@@ -20,4 +20,8 @@ We propose a unified algorithm that drastically improves the quality of condense
 - The possible datasets are CIFAR-10, MNIST, SVHN, FashionMNIST, and ImageNet (10, 100 subclasses).
 - To test data, download the entire dataset folder (e.g., cifar10) and locate the folder at ```./results```. 
 
+#### Test
+- Set ```--data_dir``` and ```--imagenet_dir``` in argument.py to point the folder containing the original dataset. 
+- 
+
 ## Optimize Condensed Data
