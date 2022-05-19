@@ -15,13 +15,24 @@ We propose a unified algorithm that drastically improves the quality of condense
 - To run the codes, install efficientnet package ```pip install efficientnet_pytorch```
 
 ## Test Condensed Data
-#### Download data
-- You can download condensed data evaluated in our paper from [Here](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing).
+### Download data
+You can download condensed data evaluated in our paper from [Here](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing).
 - The possible datasets are CIFAR-10, MNIST, SVHN, FashionMNIST, and ImageNet (10, 100 subclasses).
 - To test data, download the entire dataset folder (e.g., cifar10) and locate the folder at ```./results```. 
 
-#### Test
-- Set ```--data_dir``` and ```--imagenet_dir``` in argument.py to point the folder containing the original dataset (required for measuring test accuracy). 
-- 
+### Training neural networks on data
+- Set ```--data_dir``` and ```--imagenet_dir``` in argument.py to point the folder containing the original dataset (required for measuring test accuracy).   
+
+Then run the following codes:   
+```
+python test.py -d [dataset] -n [network] -f [factor] --ipc [ipc] --repeat [#repetition]
+```
+- To evaluate **IDC-I**, set ```-f 1```. To evaluate **IDC**, set ```-f 3``` for ImageNet and ```-f 2``` for others.
+- For detailed explanation for arguments, please refer to ```argument.py```
+
+As an example, you can evaluate IDC (10 images/class) on CIFAR-10 and ConvNet-3 for 3 times by
+```
+python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
+```
 
 ## Optimize Condensed Data
