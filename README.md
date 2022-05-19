@@ -37,7 +37,7 @@ python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
 ```
 - To evaluate IDC (20 images/class) on ImageNet with 10 classes and ResNetAP-10 for 3 times, run
 ```
-python test.py -d imagenet --nclass 10 -n convnet -f 3 --ipc 20 --repeat 3
+python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
 ```
 
 ## Optimize Condensed Data
