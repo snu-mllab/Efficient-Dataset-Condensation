@@ -21,7 +21,7 @@ You can download condensed data evaluated in our paper from [Here](https://drive
 - To test data, download the entire dataset folder (e.g., cifar10) and locate the folder at ```./results```. 
 
 ### Training neural networks on data
-- Set ```--data_dir``` and ```--imagenet_dir``` in argument.py to point the folder containing the original dataset (required for measuring test accuracy).   
+- Set ```--data_dir``` and ```--imagenet_dir``` in ```argument.py``` to point the folder containing the original dataset (required for measuring test accuracy).   
 
 Then run the following codes:   
 ```
