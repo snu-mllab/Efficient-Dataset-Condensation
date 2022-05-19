@@ -18,5 +18,6 @@ We propose a unified algorithm that drastically improves the quality of condense
 #### Download data
 - You can download condensed data evaluated in our paper from [Here](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing).
 - The possible datasets are CIFAR-10, MNIST, SVHN, FashionMNIST, and ImageNet (10, 100 subclasses).
+- To test data, download the entire dataset folder (e.g., cifar10) and locate the folder at ```./results```. 
 
 ## Optimize Condensed Data
