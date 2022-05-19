@@ -253,34 +253,33 @@ args.nch = 3
 if args.dataset[:5] == 'cifar':
     args.size = 32
     args.mix_p = 0.5
+    args.dsa = True
     if args.dataset == 'cifar10':
         args.nclass = 10
-        args.dsa = True
     elif args.dataset == 'cifar100':
-        if args.nclass == 10:
-            args.nclass = 100
+        args.nclass = 100
 
 if args.dataset == 'svhn':
-    args.dsa = True
     args.size = 32
     args.nclass = 10
     args.mix_p = 0.5
+    args.dsa = True
     args.dsa_strategy = remove_aug(args.dsa_strategy, 'flip')
 
 if args.dataset[:5] == 'mnist':
     args.nclass = 10
     args.size = 28
     args.nch = 1
-    args.dsa = True
     args.mix_p = 0.5
+    args.dsa = True
     args.dsa_strategy = remove_aug(args.dsa_strategy, 'flip')
 
 if args.dataset == 'fashion':
     args.nclass = 10
     args.size = 28
     args.nch = 1
-    args.dsa = True
     args.mix_p = 0.5
+    args.dsa = True
 
 if args.dataset == 'imagenet':
     if args.nclass >= 100:
@@ -380,7 +379,7 @@ if args.ipc > 0:
         # Img update
         args.tag += f'_lr{args.lr_img}'
         args.lr_img = tune_lr_img(args, args.lr_img)
-        print(f"lr img tuned! {args.lr_img:.4f}")
+        print(f"lr_img tuned! {args.lr_img:.4f}")
         if args.momentum != 0.9:
             args.tag += f'_mom{args.momentum}'
         if args.batch_real != 64:

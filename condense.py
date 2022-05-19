@@ -276,8 +276,8 @@ def load_resized_data(args):
         train_dataset.nclass = 10
 
     elif args.dataset == 'imagenet':
-        traindir = os.path.join(args.data_dir, 'ImageNet-Fast/imagenet', 'train')
-        valdir = os.path.join(args.data_dir, 'ImageNet-Fast/imagenet', 'val')
+        traindir = os.path.join(args.imagenet_dir, 'train')
+        valdir = os.path.join(args.imagenet_dir, 'val')
 
         resize = transforms.Compose([
             transforms.Resize(args.size),
