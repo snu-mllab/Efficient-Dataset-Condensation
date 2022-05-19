@@ -21,7 +21,7 @@ We propose a unified algorithm that drastically improves the quality of condense
 - To test data, download the entire dataset folder (e.g., cifar10) and locate the folder at ```./results```. 
 
 #### Test
-- Set ```--data_dir``` and ```--imagenet_dir``` in argument.py to point the folder containing the original dataset (required for measure test accuracy). 
+- Set ```--data_dir``` and ```--imagenet_dir``` in argument.py to point the folder containing the original dataset (required to measure test accuracy). 
 - 
 
 ## Optimize Condensed Data
