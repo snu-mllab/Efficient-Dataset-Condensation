@@ -14,7 +14,7 @@ from math import ceil
 from coreset import randomselect, herding
 from efficientnet_pytorch import EfficientNet
 
-DATA_PATH = "/home/janghyun/Codes/publication/icml22/result"
+DATA_PATH = "./results"
 
 
 def return_data_path(args):

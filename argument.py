@@ -295,13 +295,11 @@ if args.dataset == 'speech':
     args.nclass = 8
     args.mixup = 'vanilla'
 
-datatag = f'{args.dataset}-{args.nclass}'
-if (args.size > 0) and (args.dataset == 'imagenet'):
-    datatag += f'-{args.size}'
-elif (args.size > 64) and (args.dataset == 'speech'):
-    datatag += f'-{args.size}'
-if args.dseed != 0:
-    datatag += f'_{args.dseed}'
+datatag = f'{args.dataset}'
+if args.dataset == 'imagenet':
+    datatag += f'{args.nclass}'
+    if args.dseed != 0:
+        datatag += f'-seed{args.dseed}'
 """
 Network
 """
