@@ -25,7 +25,7 @@ You can download condensed data evaluated in our paper from [Here](https://drive
 
 Then run the following codes:   
 ```
-python test.py -d [dataset] -n [network] -f [factor] --ipc [ipc] --repeat [#repetition]
+python test.py -d [dataset] -n [network] -f [factor] --ipc [image/class] --repeat [#repetition]
 ```
 - To evaluate **IDC-I**, set ```-f 1```. To evaluate **IDC**, set ```-f 3``` for ImageNet and ```-f 2``` for others.
 - For detailed explanation for arguments, please refer to ```argument.py```
@@ -41,3 +41,9 @@ python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
 ```
 
 ## Optimize Condensed Data
+To reproduce our condensed data, simply run
+```
+python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
+```
+The results will be saved at ```./results/[dataset]/[expname]```. We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
+
