@@ -2,25 +2,22 @@
 import os
 import time
 import numpy as np
-
 import torch
 import torch.nn as nn
 import torch.nn.parallel
 import torch.backends.cudnn as cudnn
 import torch.optim as optim
-import torch.utils.data
-import torch.utils.data.distributed
 import torchvision.models as models
 import models.resnet as RN
 import models.resnet_ap as RNAP
 import models.convnet as CN
 import models.densenet_cifar as DN
 from data import load_data, MEANS, STDS
-from utils import random_indices, rand_bbox, AverageMeter, accuracy, get_time, Plotter
-import warnings
-from augment import DiffAug
-import time
+from misc.utils import random_indices, rand_bbox, AverageMeter, accuracy, get_time, Plotter
+from misc.augment import DiffAug
 from efficientnet_pytorch import EfficientNet
+import time
+import warnings
 
 warnings.filterwarnings("ignore")
 model_names = sorted(

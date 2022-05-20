@@ -4,9 +4,9 @@ import torchvision.datasets as datasets
 from torchvision.utils import save_image
 import torch.nn.functional as F
 import os
-import utils
 import numpy as np
 import warnings
+from misc import utils
 
 warnings.filterwarnings("ignore")
 
@@ -96,7 +96,7 @@ class ImageFolder(datasets.DatasetFolder):
         cls_from = nclass * phase
         cls_to = nclass * (phase + 1)
         if seed == 0:
-            with open('./class100.txt', 'r') as f:
+            with open('./misc/class100.txt', 'r') as f:
                 class_name = f.readlines()
             for c in class_name:
                 c = c.split('\n')[0]

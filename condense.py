@@ -5,14 +5,14 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import datasets, transforms
-import utils
 from data import transform_imagenet, transform_cifar, transform_svhn, transform_mnist, transform_fashion
 from data import TensorDataset, ImageFolder, save_img
 from data import ClassDataLoader, ClassMemDataLoader, MultiEpochsDataLoader
 from data import MEANS, STDS
 from train import define_model, train_epoch
 from test import test_data
-from augment import DiffAug
+from misc.augment import DiffAug
+from misc import utils
 from math import ceil
 
 
@@ -526,7 +526,7 @@ def condense(args, logger, device='cuda'):
 
 if __name__ == '__main__':
     import shutil
-    from utils import Logger
+    from misc.utils import Logger
     from argument import args
     import torch.backends.cudnn as cudnn
     import json
@@ -538,7 +538,6 @@ if __name__ == '__main__':
         torch.cuda.manual_seed(args.seed)
 
     os.makedirs(args.save_dir, exist_ok=True)
-
     cur_file = os.path.join(os.getcwd(), __file__)
     shutil.copy(cur_file, args.save_dir)
 

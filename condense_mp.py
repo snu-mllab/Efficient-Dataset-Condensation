@@ -5,13 +5,13 @@ import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
 from torchvision import datasets, transforms
-import utils
 from data import transform_imagenet, transform_cifar, TensorDataset, ImageFolder, save_img
 from data import ClassPartMemDataLoader, MultiEpochsDataLoader
 from data import MEANS, STDS
 from train import define_model, train_epoch
 from test import test_data, load_ckpt
-from augment import DiffAug
+from misc import utils
+from misc.augment import DiffAug
 from math import ceil
 
 
@@ -216,8 +216,8 @@ def load_resized_data(args, subclass_list):
         train_dataset.nclass = 100
 
     elif args.dataset == 'imagenet':
-        traindir = os.path.join(args.args.imagenet_dir, 'train')
-        valdir = os.path.join(args.args.imagenet_dir, 'val')
+        traindir = os.path.join(args.imagenet_dir, 'train')
+        valdir = os.path.join(args.imagenet_dir, 'val')
 
         resize = transforms.Compose([
             transforms.Resize(args.size),
@@ -493,19 +493,24 @@ def condense(args, logger, device='cuda'):
 
 if __name__ == '__main__':
     import shutil
-    from utils import Logger
+    from misc.utils import Logger
     from argument import args
     import torch.backends.cudnn as cudnn
     import json
 
     cudnn.benchmark = True
+
+    if args.nclass_sub < 0:
+        raise AssertionError("Set number of subclasses! (args.nclass_sub)")
+    if args.phase < 0:
+        raise AssertionError("Set phase number! (args.phase)")
+
     if args.seed > 0:
         np.random.seed(args.seed)
         torch.manual_seed(args.seed)
         torch.cuda.manual_seed(args.seed)
 
     os.makedirs(args.save_dir, exist_ok=True)
-
     cur_file = os.path.join(os.getcwd(), __file__)
     shutil.copy(cur_file, args.save_dir)
 

@@ -1,4 +1,5 @@
 import argparse
+from misc.reproduce import set_arguments
 
 
 def str2bool(v):
@@ -220,6 +221,7 @@ parser.add_argument(
 )
 parser.add_argument('--lr_img', type=float, default=5e-3, help='condensed data learning rate')
 parser.add_argument('--mom_img', type=float, default=0.5, help='condensed data momentum')
+parser.add_argument('--reproduce', action='store_true', help='for reproduce our setting')
 
 # Test
 parser.add_argument('-s',
@@ -246,6 +248,9 @@ parser.add_argument('--name', type=str, default='', help='name of the test data 
 parser.set_defaults(bottleneck=True)
 parser.set_defaults(verbose=False)
 args = parser.parse_args()
+
+if args.reproduce:
+    args = set_arguments(args)
 """ 
 DATA 
 """
@@ -282,7 +287,10 @@ if args.dataset == 'fashion':
     args.dsa = True
 
 if args.dataset == 'imagenet':
+    args.size = 224
     if args.nclass >= 100:
+        args.load_memory = False
+        # We need to tune lr and weight decay
         args.lr = 0.1
         args.weight_decay = 1e-4
         args.batch_size = max(128, args.batch_size)
@@ -379,7 +387,7 @@ if args.ipc > 0:
         # Img update
         args.tag += f'_lr{args.lr_img}'
         args.lr_img = tune_lr_img(args, args.lr_img)
-        print(f"lr_img tuned! {args.lr_img:.4f}")
+        print(f"lr_img tuned! {args.lr_img:.5f}")
         if args.momentum != 0.9:
             args.tag += f'_mom{args.momentum}'
         if args.batch_real != 64:

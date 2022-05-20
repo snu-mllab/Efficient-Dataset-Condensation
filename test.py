@@ -1,5 +1,6 @@
-import numpy as np
 import os
+import numpy as np
+from math import ceil
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -10,7 +11,6 @@ from data import TensorDataset, ImageFolder, MultiEpochsDataLoader
 from data import save_img, transform_imagenet, transform_cifar, transform_svhn, transform_mnist, transform_fashion
 import models.resnet as RN
 import models.densenet_cifar as DN
-from math import ceil
 from coreset import randomselect, herding
 from efficientnet_pytorch import EfficientNet
 
