@@ -50,4 +50,4 @@ python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 - We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
 
 
-## Full training of networks
+## Train networks on Original training set
