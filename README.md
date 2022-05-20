@@ -49,3 +49,5 @@ python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 - The results will be saved at ```./results/[dataset]/[expname]```. 
 - We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
 
+
+## Full training of networks
