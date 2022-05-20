@@ -40,6 +40,14 @@ python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
 python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
 ```
 
+With 10 images per class, the top-1 test accuracy is about
+| Method | CIFAR-10  | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
+| :---------- | :------------: | :----: | :-----: | :----: | :----------:| :----------:|
+| **IDC-I** |  58.3  | 77.0 | 98.0 |  85.3 | 61.4 | 29.2  |
+| **IDC** | 67.5 | 87.5 | 98.4 | 86.0  | 72.8 | 46.7  |
+
+
+
 You can also test **other condensed methods** by setting ```-s [dsa, kip, random, herding]```
 - We provide DSA and KIP datasets in the case of CIFAR-10. 
 - To evaluate herding, set the location of the pretrained networks at ```coreset.py``` (*load_pretrained_herding* fn). We provide the pretrained networks for Herding ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)).
