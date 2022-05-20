@@ -63,7 +63,7 @@ python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 - We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
 
 
-## Train networks on Original training set
+## Train Networks on Original Training Set
 ```
 python train.py -d [dataset] -n [network]
 ```
