@@ -42,7 +42,7 @@ python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
 
 You can also test **other condensed methods** by setting ```-s [dsa, kip, random, herding]```
 - We provide DSA and KIP datasets in the case of CIFAR-10. 
-- To evaluate herding, set the location of the pretrained networks at *load_pretrained_herding* function in ```coreset.py```.
+- To evaluate herding, set the location of the pretrained networks from *load_pretrained_herding* function in ```coreset.py```.
 
 
 ## Optimize Condensed Data
