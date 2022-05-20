@@ -62,6 +62,8 @@ python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 - The results will be saved at ```./results/[dataset]/[expname]```. 
 - We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
 
+#### ImageNet100
+
 
 ## Train Networks on Original Training Set
 ```
@@ -71,4 +73,4 @@ python train.py -d [dataset] -n [network]
 - For ImageNet, you can choose the number of subclasses by ```--nclass [#class]```.
 - To save checkpoints, set ```--save_ckpt```.
 
-
+## Citation
