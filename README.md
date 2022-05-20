@@ -20,7 +20,7 @@ You can download condensed data evaluated in our paper from [Here](https://drive
 - The possible datasets are CIFAR-10, MNIST, SVHN, FashionMNIST, and ImageNet (10, 100 subclasses).
 - To test data, download the entire dataset folder (e.g., cifar10) and locate the folder at ```./results```. 
 
-### Training neural networks on data
+### Training neural networks on condensed data
 - Set ```--data_dir``` and ```--imagenet_dir``` in ```argument.py``` to point the folder containing the original dataset (required for measuring test accuracy).   
 
 Then run the following codes:   
@@ -45,5 +45,7 @@ To reproduce our condensed data, simply run
 ```
 python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 ```
-The results will be saved at ```./results/[dataset]/[expname]```. We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
+- Set ```--data_dir``` and ```--imagenet_dir``` in ```argument.py``` to point the folder containing the original dataset.   
+- The results will be saved at ```./results/[dataset]/[expname]```. 
+- We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
 
