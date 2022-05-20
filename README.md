@@ -64,3 +64,11 @@ python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 
 
 ## Train networks on Original training set
+```
+python train.py -d [dataset] -n [network]
+```
+- Our code load data on memory at the beginning. If you don't want this, set ```-l False```.
+- For ImageNet, you can choose the number of subclasses by ```--nclass [#class]```.
+- To save checkpoints, set ```--save_ckpt```.
+
+
