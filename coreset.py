@@ -29,12 +29,12 @@ def load_ckpt(model, file_dir, verbose=True):
 
 
 def load_pretrained_herding(args):
-    # Data
     model = define_model(args, args.nclass).cuda()
     if args.dataset == 'imagenet':
-        traindir = os.path.join('/ssd_data/imagenet/', 'train')
-        valdir = os.path.join('/ssd_data/imagenet/', 'val')
+        traindir = os.path.join(args.imagenet_dir, 'train')
+        valdir = os.path.join(args.imagenet_dir, 'val')
         _, test_transform = transform_imagenet(size=args.size)
+
         train_dataset = ImageFolder(
             traindir,
             test_transform,  # No augment here for feature extraction!
@@ -46,7 +46,6 @@ def load_pretrained_herding(args):
                                   nclass=args.nclass,
                                   seed=args.dseed,
                                   load_memory=False)
-
         if args.nclass == 100:
             file_dir = f'./results/imagenet-100-224/resnet10apin_cut_rrc_wd0.0001/model_best.pth.tar'
         elif args.nclass == 10:
@@ -212,10 +211,9 @@ def herding(args):
 
     train_dataset = TensorDataset(data, target, train_transform)
 
-    if args.dataset != 'speech':
-        save_img('./results/test.png',
-                 torch.stack([d[0] for d in train_dataset]),
-                 dataname=args.dataset)
+    save_img('./results/herding.png',
+             torch.stack([d[0] for d in train_dataset]),
+             dataname=args.dataset)
     return train_dataset, val_dataset
 
 

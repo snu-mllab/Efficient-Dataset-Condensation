@@ -10,10 +10,11 @@ from data import TensorDataset, ImageFolder, save_img
 from data import ClassDataLoader, ClassMemDataLoader, MultiEpochsDataLoader
 from data import MEANS, STDS
 from train import define_model, train_epoch
-from test import test_data
+from test import test_data, load_ckpt
 from misc.augment import DiffAug
 from misc import utils
 from math import ceil
+import glob
 
 
 class Synthesizer():
@@ -401,6 +402,21 @@ def matchloss(args, img_real, img_syn, lab_real, lab_syn, model):
     return loss
 
 
+def pretrain_sample(args, model, verbose=False):
+    folder_base = f'./pretrained/{args.datatag}/{args.modeltag}_cut'
+    folder_list = glob.glob(f'{folder_base}*')
+    tag = np.random.randint(len(folder_list))
+    folder = folder_list[tag]
+
+    epoch = args.pt_from
+    if args.pt_num > 1:
+        epoch = np.random.randint(args.pt_from, args.pt_from + args.pt_num)
+    ckpt = f'checkpoint{epoch}.pth.tar'
+
+    file_dir = os.path.join(folder, ckpt)
+    load_ckpt(model, file_dir, verbose=verbose)
+
+
 def condense(args, logger, device='cuda'):
     # Define real dataset and loader
     trainset, val_loader = load_resized_data(args)
@@ -453,6 +469,9 @@ def condense(args, logger, device='cuda'):
                                   momentum=args.momentum,
                                   weight_decay=args.weight_decay)
             criterion = nn.CrossEntropyLoss()
+
+            if args.pt_from >= 0:
+                pretrain_sample(args, model)
             if args.early > 0:
                 for _ in range(args.early):
                     train_epoch(args,
@@ -530,6 +549,8 @@ if __name__ == '__main__':
     from argument import args
     import torch.backends.cudnn as cudnn
     import json
+
+    assert args.ipc > 0
 
     cudnn.benchmark = True
     if args.seed > 0:

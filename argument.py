@@ -149,7 +149,7 @@ parser.add_argument('--test', action='store_true', help='for debugging, do not s
 parser.add_argument('--time', action='store_true', help='measuring time for each step')
 
 # Condense
-parser.add_argument('-i', '--ipc', type=int, default=10, help='number of condensed data per class')
+parser.add_argument('-i', '--ipc', type=int, default=-1, help='number of condensed data per class')
 parser.add_argument('-f',
                     '--factor',
                     type=int,
@@ -287,9 +287,12 @@ if args.dataset == 'fashion':
     args.dsa = True
 
 if args.dataset == 'imagenet':
+    if args.net_type == 'convnet':
+        args.net_type = 'resnet_ap'
     args.size = 224
     if args.nclass >= 100:
         args.load_memory = False
+        print("args.load_memory is setted as False! (see args.argument)")
         # We need to tune lr and weight decay
         args.lr = 0.1
         args.weight_decay = 1e-4
@@ -406,10 +409,6 @@ if args.ipc > 0:
 else:
     if args.mixup != 'vanilla':
         args.tag += f'_{args.mixup}'
-    if args.rrc and args.dataset == 'imagenet':
-        args.tag += '_rrc'
-    if args.weight_decay != 5e-4:
-        args.tag += f'_wd{args.weight_decay}'
 
 # Result folder name
 if args.test:

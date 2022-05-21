@@ -40,13 +40,15 @@ def set_arguments(args):
         if args.nclass == 10:
             args.metric = 'l1'
             args.lr_img = 3e-3
-            args.early = 10  # Pretrain networks for 10 epochs every outer iteration.
+            # Pretrain networks for 10 epochs every outer iteration.
+            args.early = 10
         elif args.nclass == 100:
             args.metric = 'l1'
             args.lr_img = 1e-3
 
         if args.factor >= 3 and args.ipc >= 20:
-            # To prevent OOM issue
+            # To prevent OOM issue, set decode_type='bound'. This bound the number of synthetic data.
+            # At evaluation, decode_type=single (default) shows better performance
             args.decode_type = 'bound'
 
     log = f"Arguments are loaded!"

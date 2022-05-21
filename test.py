@@ -207,8 +207,8 @@ def load_data_path(args):
 
     print()
     if args.dataset == 'imagenet':
-        traindir = os.path.join(args.data_dir, 'ImageNet-Fast/imagenet', 'train')
-        valdir = os.path.join(args.data_dir, 'ImageNet-Fast/imagenet', 'val')
+        traindir = os.path.join(args.imagenet_dir, 'train')
+        valdir = os.path.join(args.imagenet_dir, 'val')
 
         train_transform, test_transform = transform_imagenet(augment=args.augment,
                                                              from_tensor=False,

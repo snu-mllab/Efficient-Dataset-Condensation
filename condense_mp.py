@@ -13,6 +13,7 @@ from test import test_data, load_ckpt
 from misc import utils
 from misc.augment import DiffAug
 from math import ceil
+import glob
 
 
 class Synthesizer():
@@ -345,23 +346,26 @@ def matchloss(args, img_real, img_syn, lab_real, lab_syn, model):
     return loss
 
 
-def pretrain_sample(args, model, path='/data_large/readonly/imagenet-100-224-wd'):
-    tag = np.random.randint(10)
-    folder = f'{args.modeltag}_{tag}_cut_wd0.0001'
+def pretrain_sample(args, model, verbose=False):
+    folder_base = f'./pretrained/{args.datatag}/{args.modeltag}_cut'
+    folder_list = glob.glob(f'{folder_base}*')
+    tag = np.random.randint(len(folder_list))
+    folder = folder_list[tag]
 
-    epoch = np.random.randint(args.pt_from, args.pt_from + args.pt_num)
+    epoch = args.pt_from
+    if args.pt_num > 1:
+        epoch = np.random.randint(args.pt_from, args.pt_from + args.pt_num)
     ckpt = f'checkpoint{epoch}.pth.tar'
 
-    file_dir = os.path.join(path, folder, ckpt)
-    load_ckpt(model, file_dir, verbose=True)
+    file_dir = os.path.join(folder, ckpt)
+    load_ckpt(model, file_dir, verbose=verbose)
 
 
 def condense(args, logger, device='cuda'):
+    # Define subclass list and reverse mapping
     cls_from = args.phase * args.nclass_sub
     cls_to = (args.phase + 1) * args.nclass_sub
     subclass_list = np.arange(cls_from, cls_to)
-
-    # subclass renumbering
     real_to_idx = {}
     for i, c in enumerate(subclass_list):
         real_to_idx[c] = i
@@ -369,7 +373,8 @@ def condense(args, logger, device='cuda'):
     # Define real dataset and loader
     trainset, val_loader = load_resized_data(args, subclass_list)
     ## This load target subclass data on GPU memory
-    ## One can modify ClassPartMemDataLoader to dynamically read class data without pre-loading
+    ## One can modify ClassPartMemDataLoader to dynamically read subclass data without pre-loading
+    ## Note, the entire class data is random sampled via the dataloader iterator (used for training networks)
     loader_real = ClassPartMemDataLoader(subclass_list,
                                          real_to_idx,
                                          trainset,
@@ -500,6 +505,7 @@ if __name__ == '__main__':
 
     cudnn.benchmark = True
 
+    assert args.ipc > 0
     if args.nclass_sub < 0:
         raise AssertionError("Set number of subclasses! (args.nclass_sub)")
     if args.phase < 0:

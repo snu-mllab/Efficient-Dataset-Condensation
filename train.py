@@ -338,7 +338,7 @@ def save_checkpoint(save_dir, state, is_best):
 
 
 if __name__ == '__main__':
-    from utils import Logger
+    from misc.utils import Logger
     from argument import args
 
     os.makedirs(args.save_dir, exist_ok=True)

@@ -667,7 +667,7 @@ def save_img(save_dir, img, unnormalize=True, max_num=200, size=64, nrow=10, dat
 if __name__ == '__main__':
     from argument import args
 
-    traindir = os.path.join(args.data_dir, 'ImageNet-Fast/imagenet', 'train')
+    traindir = os.path.join(args.imagenet_dir, 'train')
     train_transform, test_transform = transform_imagenet(augment=False,
                                                          from_tensor=False,
                                                          size=args.size,
