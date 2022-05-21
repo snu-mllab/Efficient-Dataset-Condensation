@@ -29,7 +29,7 @@ parser.add_argument(
 )
 parser.add_argument(
     "--ckp_prefix",
-    default=os.path.basename(sys.argv[0])[:-3],
+    default="cifar100",
     type=str,
     help="Checkpoint prefix",
 )
