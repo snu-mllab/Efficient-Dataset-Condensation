@@ -40,6 +40,19 @@ python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
 python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
 ```
 
+With 10 images/class condensed data, the top-1 test accuracies of trained networks are about
+| Method | CIFAR-10  | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
+| :---------- | :------------: | :----: | :-----: | :----: | :----------:| :----------:|
+| **IDC-I** |  58.3  | 77.0 | 98.0 |  85.3 | 61.4 | 29.2  |
+| **IDC** | 67.5 | 87.5 | 98.4 | 86.0  | 72.8 | 46.7  |
+
+
+
+You can also test **other condensed methods** by setting ```-s [dsa, kip, random, herding]```
+- We provide DSA and KIP datasets in the case of CIFAR-10. 
+- To evaluate herding, set the location of the pretrained networks at ```coreset.py``` (*load_pretrained_herding* fn). We provide the pretrained networks for Herding ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)).
+
+
 ## Optimize Condensed Data
 To reproduce our condensed data, simply run
 ```
@@ -49,3 +62,24 @@ python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 - The results will be saved at ```./results/[dataset]/[expname]```. 
 - We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
 
+#### ImageNet100
+
+
+## Train Networks on Original Training Set
+```
+python train.py -d [dataset] -n [network]
+```
+- Our code load data on memory at the beginning. If you don't want this, set ```-l False```.
+- For ImageNet, you can choose the number of subclasses by ```--nclass [#class]```.
+- To save checkpoints, set ```--save_ckpt```.
+
+## Citation
+```
+@inproceedings{
+kimICML22,
+title = {Dataset Condensation via Efficient Synthetic-Data Parameterization},
+author = {Kim, Jang-Hyun and Kim, Jinuk and Oh, Seong Joon and Yun, Sangdoo and Song, Hwanjun and Jeong, Joonhyun and Ha, Jung-Woo and Song, Hyun Oh},
+booktitle = {International Conference on Machine Learning (ICML)},
+year = {2022}
+}
+```
