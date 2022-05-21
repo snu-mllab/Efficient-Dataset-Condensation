@@ -81,6 +81,7 @@ To sum up, after saving the pretrained models, run
 ```
 python condense_mp.py --reproduce  -d imagenet --nclass 100 --pt_from 5 -f [factor] --ipc [image/class] --nclass_sub 20 --phase [0,1,2,3,4]
 ```
+- You need to assign a different phase number to each processor.
 - In the test code, we aggregate the resulted condensed data. 
 - To reduce the memory requirement, use smaller --nclass_sub.
 
