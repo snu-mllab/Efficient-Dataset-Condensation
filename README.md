@@ -83,7 +83,7 @@ python condense_mp.py --reproduce  -d imagenet --nclass 100 --pt_from 5 -f [fact
 ```
 - You need to assign a different phase number to each processor.
 - In the test code, we aggregate the resulted condensed data. 
-- To reduce the memory requirement, use smaller --nclass_sub.
+- To reduce the memory requirement, use smaller ```--nclass_sub```.
 
 ## Train Networks on Original Training Set
 ```
