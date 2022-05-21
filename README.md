@@ -40,7 +40,7 @@ python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
 python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
 ```
 
-With 10 images/class condensed data, the top-1 test accuracy of trained networks are about
+With 10 images/class condensed data, the top-1 test accuracies of trained networks are about
 | Method | CIFAR-10  | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
 | :---------- | :------------: | :----: | :-----: | :----: | :----------:| :----------:|
 | **IDC-I** |  58.3  | 77.0 | 98.0 |  85.3 | 61.4 | 29.2  |
