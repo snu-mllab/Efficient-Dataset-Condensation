@@ -32,13 +32,13 @@ python test.py -d [dataset] -n [network] -f [factor] --ipc [image/class] --repea
 
 As an example, 
 - To evaluate IDC (10 images/class) on CIFAR-10 and ConvNet-3 for 3 times, run
-```
-python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
-```
+  ```
+  python test.py -d cifar10 -n convnet -f 2 --ipc 10 --repeat 3
+  ```
 - To evaluate IDC (20 images/class) on ImageNet with 10 classes and ResNetAP-10 for 3 times, run
-```
-python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
-```
+  ```
+  python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
+  ```
 
 With 10 images/class condensed data, the top-1 test accuracies of trained networks are about
 | Method | CIFAR-10  | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
@@ -54,15 +54,34 @@ You can also test **other condensed methods** by setting ```-s [dsa, kip, random
 
 
 ## Optimize Condensed Data
-To reproduce our condensed data, simply run
+To reproduce our condensed data (except for ImageNet-100), simply run
 ```
 python condense.py --reproduce  -d [dataset] -f [factor] --ipc [image/class]
 ```
 - Set ```--data_dir``` and ```--imagenet_dir``` in ```argument.py``` to point the folder containing the original dataset.   
 - The results will be saved at ```./results/[dataset]/[expname]```. 
 - We provide specific argument settings for each dataset at ```./misc/reproduce.py```.
+- In the case of **ImageNet-100**, we use the tricks below for faster optimization.
 
-#### ImageNet100
+### Faster optimization
+1. Utilizing pretrained networks   
+    - To train pretrained networks (which were used in condensation stage), run
+    ```
+    python pretrain.py -d imagenet --nclass 100 -n resnet_ap --pt_from [pretrain epochs] --seed [seed]
+    ```
+    - In our ImageNet-100 experiments, we used ```--pt_from 5``` and train networks with 10 random seeds.
+    - For ImageNet-10, ```--pt_from 10``` will be good. 
+
+
+2. Multi-processing
+    - We partition the classes and do condensation with multiple processors (```condense_mp.py```).
+    - ```--nclass_sub``` means the number of classes per partition and ```--phase``` indicates the partition number. 
+
+To sum up, after saving the pretrained models, run
+```
+python condense_mp.py --reproduce  -d imagenet --nclass 100 --pt_from 5 -f [factor] --ipc [image/class] --nclass_sub 20 --phase [0,1,2,3,4]
+```
+In the test code, we aggregate the resulted condensed data. 
 
 
 ## Train Networks on Original Training Set
