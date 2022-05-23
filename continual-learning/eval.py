@@ -45,6 +45,12 @@ if __name__ == "__main__":
         default="checkpoints/cifar100_net_convnet_exemplar_dm_ipc_20_run_0_",
         type=str,
     )
+    parser.add_argument(
+        "--data_dir",
+        default="/data_large/readonly",
+        type=str,
+        help="directory that containing dataset, except imagenet (see data.py)",
+    )
     parser.add_argument("--order", default="checkpoints/cifar100_order.pkl", type=str)
     parser.add_argument(
         "--nb_cl_fg", default=20, type=int, help="the number of classes in first group"
@@ -67,7 +73,7 @@ if __name__ == "__main__":
         ]
     )
     evalset = torchvision.datasets.CIFAR100(
-        root="/data_large/readonly",
+        root=args.data_dir,
         train=False,
         download=False,
         transform=transform_test,

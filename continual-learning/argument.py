@@ -16,6 +16,12 @@ def str2bool(v):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--dataset", default="cifar100", type=str)
+parser.add_argument(
+    "--data_dir",
+    default="/data_large/readonly",
+    type=str,
+    help="directory that containing dataset, except imagenet (see data.py)",
+)
 parser.add_argument("--num_classes", default=100, type=int)
 parser.add_argument(
     "--nb_cl_fg", default=20, type=int, help="the number of classes in first group"

@@ -22,15 +22,9 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def load_data():
-    trainset = TensorCIFAR100(
-        "/data_large/readonly", train=True, download=True, transform=None
-    )
-    testset = TensorCIFAR100(
-        "/data_large/readonly", train=False, download=True, transform=None
-    )
-    evalset = TensorCIFAR100(
-        "/data_large/readonly", train=False, download=False, transform=None
-    )
+    trainset = TensorCIFAR100(args.data_dir, train=True, download=True, transform=None)
+    testset = TensorCIFAR100(args.data_dir, train=False, download=True, transform=None)
+    evalset = TensorCIFAR100(args.data_dir, train=False, download=False, transform=None)
 
     return trainset, evalset, testset
 
