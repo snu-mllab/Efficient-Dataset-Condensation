@@ -48,7 +48,7 @@ You can reproduce the result with ResNet-10 by setting `--net resnet10`. This wi
 ## How to Evaluate
 You can evaluate the accuracy in each stage for saved checkpoints by running:
 ```
-python eval.py --ckp_prefix checkpoints/cifar100_net_convnet_exemplar_condense_icp_20_run_0_
+python eval.py --ckp_prefix checkpoints/cifar100_net_convnet_exemplar_condense_ipc_20_run_0_
 ```
 You may change the `--ckp_prefix` option by any other methods you want to evaluate.
 
