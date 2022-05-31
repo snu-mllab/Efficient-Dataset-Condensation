@@ -1,5 +1,5 @@
 # Efficient-Dataset-Condensation
-Official PyTorch implementation of **"Dataset Condensation via Efficient Synthetic-Data Parameterization", ICML'22**
+Official PyTorch implementation of **"[Dataset Condensation via Efficient Synthetic-Data Parameterization](https://arxiv.org/abs/2205.14959)"**, **ICML'22**
 
 ![image samples](images/title.png)
 
