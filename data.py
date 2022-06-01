@@ -10,6 +10,7 @@ from misc import utils
 
 warnings.filterwarnings("ignore")
 
+# Values borrowed from https://github.com/VICO-UoE/DatasetCondensation/blob/master/utils.py
 IMG_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.ppm', '.bmp', '.pgm', '.tif', '.tiff', '.webp')
 MEANS = {'cifar': [0.4914, 0.4822, 0.4465], 'imagenet': [0.485, 0.456, 0.406]}
 STDS = {'cifar': [0.2023, 0.1994, 0.2010], 'imagenet': [0.229, 0.224, 0.225]}
@@ -546,6 +547,8 @@ class ClassPartMemDataLoader(MultiEpochsDataLoader):
 
 
 def load_data(args):
+    """Load training and validation data
+    """
     if args.dataset.startswith('cifar'):
         train_transform, test_transform = transform_cifar(augment=args.augment)
 

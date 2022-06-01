@@ -33,6 +33,8 @@ for key, val in STDS.items():
 
 
 def define_model(args, nclass, logger=None, size=None):
+    """Define neural network models
+    """
     if size == None:
         size = args.size
 

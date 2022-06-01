@@ -44,7 +44,7 @@ def ipc_epoch(ipc, factor, nclass=10, bound=-1):
 
 
 def tune_lr_img(args, lr_img):
-    """Tuning lr img for imagenet with l1 loss
+    """Tuning lr_img for imagenet 
     """
     # Use mse loss for 32x32 img and ConvNet
     ipc_base = 10
@@ -66,6 +66,8 @@ def tune_lr_img(args, lr_img):
 
 
 def remove_aug(augtype, remove_aug):
+    """Remove certain type of augmentation (string)
+    """
     aug_list = []
     for aug in augtype.split("_"):
         if aug not in remove_aug.split("_"):
@@ -188,6 +190,8 @@ parser.add_argument('--f_idx',
                     default='4',
                     help='feature matching layer. comma separation')
 ## Optimization
+# For small datasets, niter=2000 is enough for the full convergence.
+# For faster optimzation, you can early stop the code based on the printed log.
 parser.add_argument('--niter', type=int, default=500, help='number of outer iteration')
 parser.add_argument('--inner_loop', type=int, default=100, help='number of inner iteration')
 parser.add_argument('--early',

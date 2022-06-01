@@ -202,6 +202,8 @@ def decode(args, data, target):
 
 
 def load_data_path(args):
+    """Load condensed data from the given path
+    """
     if args.pretrained:
         args.augment = False
 
@@ -214,6 +216,7 @@ def load_data_path(args):
                                                              from_tensor=False,
                                                              size=args.size,
                                                              rrc=args.rrc)
+        # Load condensed dataset
         if 'idc' in args.slct_type:
             if args.slct_type == 'idc':
                 data, target = torch.load(os.path.join(f'{args.save_dir}', 'data.pt'))
@@ -365,6 +368,9 @@ def test_data(args,
               repeat=1,
               logger=print,
               num_val=4):
+    """Train neural networks on condensed data
+    """
+
     args.epoch_print_freq = args.epochs // num_val
 
     if model_fn is None:

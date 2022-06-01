@@ -18,6 +18,8 @@ import glob
 
 
 class Synthesizer():
+    """Condensed data class
+    """
     def __init__(self, args, nclass, nchannel, hs, ws, device='cuda'):
         self.ipc = args.ipc
         self.nclass = nclass
@@ -46,6 +48,8 @@ class Synthesizer():
         print(f"Factor: {self.factor} ({self.decode_type})")
 
     def init(self, loader, init_type='noise'):
+        """Condensed data initialization
+        """
         if init_type == 'random':
             print("Random initialize synset")
             for c in range(self.nclass):
@@ -92,6 +96,8 @@ class Synthesizer():
         return data, target
 
     def decode_zoom(self, img, target, factor):
+        """Uniform multi-formation
+        """
         h = img.shape[-1]
         remained = h % factor
         if remained > 0:
@@ -112,6 +118,8 @@ class Synthesizer():
         return data_dec, target_dec
 
     def decode_zoom_multi(self, img, target, factor_max):
+        """Multi-scale multi-formation
+        """
         data_multi = []
         target_multi = []
         for factor in range(1, factor_max + 1):
@@ -122,6 +130,8 @@ class Synthesizer():
         return torch.cat(data_multi), torch.cat(target_multi)
 
     def decode_zoom_bound(self, img, target, factor_max, bound=128):
+        """Uniform multi-formation with bounded number of synthetic data
+        """
         bound_cur = bound - len(img)
         budget = len(img)
 
@@ -154,6 +164,8 @@ class Synthesizer():
         return data_multi, target_multi
 
     def decode(self, data, target, bound=128):
+        """Multi-formation
+        """
         if self.factor > 1:
             if self.decode_type == 'multi':
                 data, target = self.decode_zoom_multi(data, target, self.factor)
@@ -165,6 +177,8 @@ class Synthesizer():
         return data, target
 
     def sample(self, c, max_size=128):
+        """Sample synthetic data per class
+        """
         idx_from = self.ipc * c
         idx_to = self.ipc * (c + 1)
         data = self.data[idx_from:idx_to]
@@ -175,6 +189,8 @@ class Synthesizer():
         return data, target
 
     def loader(self, args, augment=True):
+        """Data loader for condensed data
+        """
         if args.dataset == 'imagenet':
             train_transform, _ = transform_imagenet(augment=augment,
                                                     from_tensor=True,
@@ -217,6 +233,8 @@ class Synthesizer():
         return train_loader
 
     def test(self, args, val_loader, logger, bench=True):
+        """Condensed data evaluation
+        """
         loader = self.loader(args, args.augment)
         test_data(args, loader, val_loader, test_resnet=False, logger=logger)
 
@@ -225,6 +243,8 @@ class Synthesizer():
 
 
 def load_resized_data(args):
+    """Load original training data (fixed spatial size and without augmentation) for condensation
+    """
     if args.dataset == 'cifar10':
         train_dataset = datasets.CIFAR10(args.data_dir, train=True, transform=transforms.ToTensor())
         normalize = transforms.Normalize(mean=MEANS['cifar10'], std=STDS['cifar10'])
@@ -280,6 +300,7 @@ def load_resized_data(args):
         traindir = os.path.join(args.imagenet_dir, 'train')
         valdir = os.path.join(args.imagenet_dir, 'val')
 
+        # We preprocess images to the fixed size (default: 224)
         resize = transforms.Compose([
             transforms.Resize(args.size),
             transforms.CenterCrop(args.size),
@@ -329,6 +350,8 @@ def remove_aug(augtype, remove_aug):
 
 
 def diffaug(args, device='cuda'):
+    """Differentiable augmentation for condensation
+    """
     aug_type = args.aug_type
     normalize = utils.Normalize(mean=MEANS[args.dataset], std=STDS[args.dataset], device=device)
     print("Augmentataion Matching: ", aug_type)
@@ -345,6 +368,8 @@ def diffaug(args, device='cuda'):
 
 
 def dist(x, y, method='mse'):
+    """Distance objectives
+    """
     if method == 'mse':
         dist_ = (x - y).pow(2).sum()
     elif method == 'l1':
@@ -369,6 +394,8 @@ def add_loss(loss_sum, loss):
 
 
 def matchloss(args, img_real, img_syn, lab_real, lab_syn, model):
+    """Matching losses (feature or gradient)
+    """
     loss = None
 
     if args.match == 'feat':
@@ -403,6 +430,8 @@ def matchloss(args, img_real, img_syn, lab_real, lab_syn, model):
 
 
 def pretrain_sample(args, model, verbose=False):
+    """Load pretrained networks
+    """
     folder_base = f'./pretrained/{args.datatag}/{args.modeltag}_cut'
     folder_list = glob.glob(f'{folder_base}*')
     tag = np.random.randint(len(folder_list))
@@ -418,6 +447,8 @@ def pretrain_sample(args, model, verbose=False):
 
 
 def condense(args, logger, device='cuda'):
+    """Optimize condensed data
+    """
     # Define real dataset and loader
     trainset, val_loader = load_resized_data(args)
     if args.load_memory:
