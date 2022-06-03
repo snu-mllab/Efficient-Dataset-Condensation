@@ -1,5 +1,5 @@
 # Efficient-Dataset-Condensation
-Official PyTorch implementation of **"[Dataset Condensation via Efficient Synthetic-Data Parameterization](https://arxiv.org/abs/2205.14959)"**, **ICML'22**
+Official PyTorch implementation of **"[Dataset Condensation via Efficient Synthetic-Data Parameterization](https://arxiv.org/abs/2205.14959)"**, published at **ICML'22**
 
 ![image samples](images/title.png)
 
@@ -95,8 +95,7 @@ python train.py -d [dataset] -n [network]
 
 ## Citation
 ```
-@inproceedings{
-kimICML22,
+@inproceedings{kimICML22,
 title = {Dataset Condensation via Efficient Synthetic-Data Parameterization},
 author = {Kim, Jang-Hyun and Kim, Jinuk and Oh, Seong Joon and Yun, Sangdoo and Song, Hwanjun and Jeong, Joonhyun and Ha, Jung-Woo and Song, Hyun Oh},
 booktitle = {International Conference on Machine Learning (ICML)},
