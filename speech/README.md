@@ -4,17 +4,15 @@
 - The code has been tested with PyTorch 1.11.0.   
 - To run the codes, install librosa package ```pip install librosa```
 - We provide mini speech commands dataset at [Here](https://drive.google.com/file/d/1HABvixB63a-foLRcIdDOjaK5jWjfGxNY/view?usp=sharing). Download and unzip the dataset by ```tar -zxvf mini_speech_commands.tar.gz```. Set ```--data_dir``` in ```argument.py``` to point the folder containing the mini_speech_commands folder. ([reference](https://www.tensorflow.org/tutorials/audio/simple_audio))
-
+- To test with speech data, please move the files to the parents folder by ```mv ./* ../```. 
 
 ## Test Condensed Data
 ### Download data
 You can download condensed speech data evaluated in our paper from [Here](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing).
-- To test data, download the entire speech folder and locate the folder at ```./results```. 
+- To test data, download the entire **speech** folder and locate the folder at ```./results```. 
 
 ### Training neural networks on condensed data
-- Set ```--data_dir``` and ```--imagenet_dir``` in ```argument.py``` to point the folder containing the original dataset (required for measuring test accuracy).   
-
-Then run the following codes:   
+Run the following codes:   
 ```
 python test.py -d [dataset] -n [network] -f [factor] --ipc [image/class] --repeat [#repetition]
 ```
