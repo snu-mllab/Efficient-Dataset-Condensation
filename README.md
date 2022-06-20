@@ -50,7 +50,7 @@ With **10 images/class** condensed data, the top-1 test accuracies of trained ne
 
 You can also test **other condensed methods** by setting ```-s [dsa, kip, random, herding]```
 - We provide DSA and KIP datasets in the case of CIFAR-10. 
-- To evaluate herding, set the location of the pretrained networks at ```coreset.py``` (*load_pretrained_herding* fn). We provide the pretrained networks for Herding ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)).
+- To evaluate herding, download the pretrained networks for Herding ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)). You can modify the location of the pretrained networks at ```coreset.py``` (*load_pretrained_herding* fn).
 
 
 ## Optimize Condensed Data
