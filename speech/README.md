@@ -4,7 +4,7 @@
 - The code has been tested with PyTorch 1.11.0.   
 - To run the codes, install librosa package ```pip install librosa```
 - We provide mini speech commands dataset at [Here](https://drive.google.com/file/d/1HABvixB63a-foLRcIdDOjaK5jWjfGxNY/view?usp=sharing). Download and unzip the dataset by ```tar -zxvf mini_speech_commands.tar.gz```. Set ```--data_dir``` in ```argument.py``` to point the folder containing the mini_speech_commands folder. ([reference](https://www.tensorflow.org/tutorials/audio/simple_audio))
-- To test with speech data, please move the files to the parents folder by ```mv ./* ../```. 
+- To test with speech data, please move the files to the parents folder by ```mv ./* ../``` and go to the parents folder. 
 
 ## Test Condensed Data
 ### Download data
