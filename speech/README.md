@@ -14,7 +14,7 @@ You can download condensed speech data evaluated in our paper from [Here](https:
 ### Training neural networks on condensed data
 Run the following codes:   
 ```
-python test.py -d [dataset] -n [network] -f [factor] --ipc [image/class] --repeat [#repetition]
+python test_speech.py -d speech -n convnet -f [factor] --ipc [image/class] --repeat [#repetition]
 ```
 - Set ```-f 1``` for **IDC-I** and ```-f 2``` for **IDC**.
 
