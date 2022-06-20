@@ -18,7 +18,7 @@ python test_speech.py -d speech -n convnet -f [factor] --ipc [image/class] --rep
 ```
 - Set ```-f 1``` for **IDC-I** and ```-f 2``` for **IDC**.
 
-You can also test **other condensed methods** by setting ```-s [random, herding]```
+You can also test other methods by setting ```-s [random, herding]```
 - To evaluate Herding, download the pretrained networks for speech ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)) at ```./results```. You can modify the location of the pretrained networks at ```test_speech.py``` (*load_pretrained_herding* fn).
 
 
