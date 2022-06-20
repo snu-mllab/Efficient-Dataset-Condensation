@@ -1,5 +1,5 @@
 # Efficient-Dataset-Condensation
-Official PyTorch implementation of **"[Dataset Condensation via Efficient Synthetic-Data Parameterization](https://arxiv.org/abs/2205.14959)"**, **ICML'22**
+Official PyTorch implementation of **"[Dataset Condensation via Efficient Synthetic-Data Parameterization](https://arxiv.org/abs/2205.14959)"**, published at **ICML'22**
 
 ![image samples](images/title.png)
 
@@ -50,7 +50,7 @@ With **10 images/class** condensed data, the top-1 test accuracies of trained ne
 
 You can also test **other condensed methods** by setting ```-s [dsa, kip, random, herding]```
 - We provide DSA and KIP datasets in the case of CIFAR-10. 
-- To evaluate herding, set the location of the pretrained networks at ```coreset.py``` (*load_pretrained_herding* fn). We provide the pretrained networks for Herding ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)).
+- To evaluate Herding, download the pretrained networks ([link](https://drive.google.com/drive/folders/1Sk-IVb7YotbZ07WNJwfp4ID3tv6_MTnx?usp=sharing)) at ```./results```. You can modify the location of the pretrained networks at ```coreset.py``` (*load_pretrained_herding* fn).
 
 
 ## Optimize Condensed Data
@@ -95,8 +95,7 @@ python train.py -d [dataset] -n [network]
 
 ## Citation
 ```
-@inproceedings{
-kimICML22,
+@inproceedings{kimICML22,
 title = {Dataset Condensation via Efficient Synthetic-Data Parameterization},
 author = {Kim, Jang-Hyun and Kim, Jinuk and Oh, Seong Joon and Yun, Sangdoo and Song, Hwanjun and Jeong, Joonhyun and Ha, Jung-Woo and Song, Hyun Oh},
 booktitle = {International Conference on Machine Learning (ICML)},
