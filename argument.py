@@ -306,8 +306,13 @@ if args.dataset == 'imagenet':
 if args.dataset == 'speech':
     args.nch = 1
     args.size = 64
+    if args.net_type == 'convnet':
+        args.depth = 4
     args.nclass = 8
+    # For speech data, I didn't use data augmentation
     args.mixup = 'vanilla'
+    args.mixup_net = 'vanilla'
+    args.dsa = False
 
 datatag = f'{args.dataset}'
 if args.dataset == 'imagenet':

@@ -47,9 +47,9 @@ def load_pretrained_herding(args):
                                   seed=args.dseed,
                                   load_memory=False)
         if args.nclass == 100:
-            file_dir = f'./results/imagenet-100-224/resnet10apin_cut_rrc_wd0.0001/model_best.pth.tar'
+            file_dir = f'./results/imagenet-100/resnet10apin_cut_rrc_wd0.0001/model_best.pth.tar'
         elif args.nclass == 10:
-            file_dir = f'./results/imagenet-10-224-backup/full/resnet10apin_cut/model_best.pth.tar'
+            file_dir = f'./results/imagenet-10/resnet10apin_cut/model_best.pth.tar'
         else:
             raise AssertionError("Models not exist!")
 
@@ -63,7 +63,7 @@ def load_pretrained_herding(args):
         val_dataset = torchvision.datasets.CIFAR10(args.data_dir,
                                                    train=False,
                                                    transform=test_transform)
-        file_dir = f'../pretrained/CIFAR10_ConvNet_Feature_dsa_cut.pt'
+        file_dir = f'./results/cifar10/conv3in_cut/CIFAR10_ConvNet_Feature_dsa_cut.pt'
 
     elif args.dataset == 'svhn':
         _, test_transform = transform_svhn(augment=args.augment, from_tensor=False)
@@ -76,9 +76,12 @@ def load_pretrained_herding(args):
                                                 split='test',
                                                 transform=test_transform)
         if args.net_type == 'convnet':
-            file_dir = f'./results/svhn-10/conv3in_cut/model_best.pth.tar'
+            file_dir = f'./results/svhn/conv3in_cut/model_best.pth.tar'
         else:
-            file_dir = f'./results/svhn-10/resnet10_cut/model_best.pth.tar'
+            file_dir = f'./results/svhn/resnet10_cut/model_best.pth.tar'
+
+    else:
+        raise AssertionError("Dataset is not supported!")
 
     loader = MultiEpochsDataLoader(train_dataset,
                                    batch_size=args.batch_size // 2,
@@ -170,8 +173,6 @@ def herding(args):
     train_dataset, val_dataset, loader, model = load_pretrained_herding(args)
     if args.dataset == 'imagenet':
         f_idx = 5
-    elif args.dataset == 'speech':
-        f_idx = 3
     else:
         f_idx = 2
 

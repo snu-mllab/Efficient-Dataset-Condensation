@@ -31,6 +31,11 @@ def set_arguments(args):
         elif args.dataset == 'fashion':
             args.metric = 'l1'
             args.lr_img = 1e-4
+        elif args.dataset == 'speech':
+            args.metric = 'l1'
+            args.niter = 1000
+            args.lr_img = 3e-3
+            args.aug_type = 'none'
         else:
             raise AssertionError("Not supported dataset!")
     else:
