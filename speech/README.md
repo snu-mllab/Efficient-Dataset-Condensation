@@ -1,7 +1,7 @@
 # Mini Speech Commands
 
 #### Condensed speech samples
-- You can here our condensed samples from [Here](https://drive.google.com/drive/folders/1LgVwWJcLGr8PfGzGSwWrebTGkP20oP4S?usp=sharing)!
+- You can listen to our condensed samples from [Here](https://drive.google.com/drive/folders/1LgVwWJcLGr8PfGzGSwWrebTGkP20oP4S?usp=sharing)!
 ![wave samples](wave.png)
 
 ## Requirements
