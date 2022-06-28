@@ -13,7 +13,10 @@ We propose a unified algorithm that drastically improves the quality of condense
 ## Requirements
 - The code has been tested with PyTorch 1.11.0.   
 - To run the codes, install efficientnet package ```pip install efficientnet_pytorch```
-- For speech data, please refer to ```./speech```
+
+## Updates
+- (2022.06.28) We uploaded CIFAR-100 condensed data with 10 and 20 images per class ([link](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing)). 
+- (2022.06.28) We uploaded codes for speech data (see ```./speech```).
 
 ## Test Condensed Data
 ### Download data
