@@ -8,7 +8,7 @@ def set_arguments(args):
         args.net_type = 'convnet'
         args.depth = 3
         args.niter = 2000
-        if args.dataset == 'cifar10':
+        if args.dataset[:5] == 'cifar':
             args.metric = 'mse'
             args.lr_img = 5e-3
             args.n_data = 2000

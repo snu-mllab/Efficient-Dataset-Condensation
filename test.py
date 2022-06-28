@@ -32,6 +32,9 @@ def return_data_path(args):
             if args.dataset == 'cifar10':
                 name = f'cifar10/conv3in_grad_mse_nd2000_cut_niter2000_factor{args.factor}_lr0.005_{init}'
 
+            elif args.dataset == 'cifar100':
+                name = f'cifar100/conv3in_grad_mse_nd2000_cut_niter2000_factor{args.factor}_lr0.005_{init}'
+
             elif args.dataset == 'imagenet':
                 if args.nclass == 10:
                     name = f'imagenet10/resnet10apin_grad_l1_ely10_nd500_cut_factor{args.factor}_{init}'
