@@ -16,7 +16,7 @@ We propose a unified algorithm that drastically improves the quality of condense
 
 ## Updates
 - (2022.06.28) We uploaded CIFAR-100 condensed data with 10 and 20 images per class ([link](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing)). 
-- (2022.06.28) We uploaded codes for speech data (see ```./speech```).
+- (2022.06.28) We uploaded codes for speech data (see [```./speech```](https://github.com/snu-mllab/Efficient-Dataset-Condensation/tree/main/speech)).
 
 ## Test Condensed Data
 ### Download data
