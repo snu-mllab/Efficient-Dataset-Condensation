@@ -44,11 +44,11 @@ As an example,
   python test.py -d imagenet --nclass 10 -n resnet_ap -f 3 --ipc 20 --repeat 3
   ```
 
-With **10 images/class** condensed data, the top-1 test accuracies of trained networks are about
-| Method | CIFAR-10  | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
-| :---------- | :------------: | :----: | :-----: | :----: | :----------:| :----------:|
-| **IDC-I** |  58.3  | 77.0 | 98.0 |  85.3 | 61.4 | 29.2  |
-| **IDC** | 67.5 | 87.5 | 98.4 | 86.0  | 72.8 | 46.7  |
+With **10 images/class** condensed data, the top-1 test accuracies of ConvNet-3 (ResNetAP-10 for ImageNet) are about
+| Method | CIFAR-10 | CIFAR-100 | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
+| :----------: | :------------:  | :------------: | :----: | :-----: | :----: | :----------:| :----------:|
+| **IDC-I** |  58.3  | 36.6 | 77.0 | 98.0 |  85.3 | 61.4 | 29.2  |
+| **IDC** | 67.5 | 45.1 | 87.5 | 98.4 | 86.0  | 72.8 | 46.7  |
 
 
 
