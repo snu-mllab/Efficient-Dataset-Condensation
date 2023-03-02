@@ -10,6 +10,38 @@ To this end, we propose a novel condensation framework that generates multiple s
 We further analyze the shortcomings of the existing gradient matching-based condensation methods and develop an effective optimization technique for improving the condensation of training data information. 
 We propose a unified algorithm that drastically improves the quality of condensed data against the current state-of-the-art on CIFAR-10, ImageNet, and Speech Commands.*
 
+## Basic results ([Data Drive](https://drive.google.com/drive/folders/1yh0Hf2ia4b-1edMiAr1kXCH4eUcYNfmz?usp=sharing))
+Top-1 test accuracies with ConvNet-3 (ResNetAP-10 for ImageNet)
+
+- **1 images/class**
+
+| Method | CIFAR-10 | SVHN | MNIST | FashionMNIST |
+| :------: | :-----:  | :----: | :-----: | :----: |
+| **IDC-I** | 36.7 | 46.7 | 88.9 | 70.7 |   
+| **IDC** | 50.6 | 68.5 | 94.2 | 81.0 | 
+
+- **10 images/class**
+
+| Method | CIFAR-10 | CIFAR-100 | SVHN | MNIST | FashionMNIST | ImageNet-10  | ImageNet-100  |
+| :------: | :-----:  | :--------: | :----: | :-----: | :----: | :------:| :------:|
+| **IDC-I** |  58.3  | 36.6 | 77.0 | 98.0 | 85.3 | 61.4 | 29.2  |
+| **IDC** | 67.5 | 45.1 | 87.5 | 98.4 | 86.0  | 72.8 | 46.7  |
+
+- **20 images/class**
+
+| Method | CIFAR-100 | ImageNet-10  | ImageNet-100  |
+| :----: | :----: | :-----: | :----: | 
+| **IDC-I** | 41.5 | 65.5 | 34.5 |
+| **IDC** | 49.0 | 76.6 | 53.7 | 
+
+- **50 images/class**
+
+| Method | CIFAR-10 | SVHN | MNIST | FashionMNIST |
+| :------: | :-----:  | :----: | :-----: | :----: |
+| **IDC-I** |  69.5 | 87.9 | 98.8 | 89.1 |
+| **IDC** | 74.5 | 90.1 | 99.1 | 86.2 |
+
+
 ## Requirements
 - The code has been tested with PyTorch 1.11.0.   
 - To run the codes, install efficientnet package ```pip install efficientnet_pytorch```
