@@ -1,3 +1,7 @@
+"""
+The original code is created by Jang-Hyun Kim.
+GitHub Repository: https://github.com/snu-mllab/Efficient-Dataset-Condensation
+"""
 import os
 import numpy as np
 import torch

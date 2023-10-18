@@ -1,3 +1,7 @@
+"""
+The original code is created by Jang-Hyun Kim.
+GitHub Repository: https://github.com/snu-mllab/Efficient-Dataset-Condensation
+"""
 import argparse
 from misc.reproduce import set_arguments
 

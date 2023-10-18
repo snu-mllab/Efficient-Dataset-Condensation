@@ -1,3 +1,7 @@
+"""
+The original code is created by Jang-Hyun Kim.
+GitHub Repository: https://github.com/snu-mllab/Efficient-Dataset-Condensation
+"""
 import os
 import numpy as np
 import torch
@@ -315,9 +319,9 @@ def condense(args, logger, device='cuda'):
         model.train()
         lr = 3e-4  # use small lr for update networks on full training set
         optim_net = optim.SGD(model.parameters(),
-                                lr,
-                                momentum=args.momentum,
-                                weight_decay=args.weight_decay)
+                              lr,
+                              momentum=args.momentum,
+                              weight_decay=args.weight_decay)
         criterion = nn.CrossEntropyLoss()
         if args.early > 0:
             for _ in range(args.early):
